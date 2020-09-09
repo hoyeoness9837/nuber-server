@@ -1,0 +1,20 @@
+{
+  "name": "nuber-server",
+  "version": "1.0.0",
+  "description": "Server repository for Nuber-server clone coding applicaiton",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoyeoness9837/nuber-server.git"
+  },
+  "author": "Hoyeon Kim <kim.hoyeon93@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.6.4",
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.0.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {}
+}
