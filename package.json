@@ -10,6 +10,7 @@
   "author": "Hoyeon Kim <kim.hoyeon93@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/cors": "^2.8.7",
     "@types/helmet": "^0.0.48",
     "@types/morgan": "^1.9.1",
@@ -28,6 +29,8 @@
     "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graph.d.ts"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "class-validator": "^0.12.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "graphql-tools": "^6.2.1",
