@@ -18,19 +18,22 @@ class Verification extends BaseEntity {
 
   @Column({ type: "text", enum: [PHONE, EMAIL] })
   target: verificationTarget;
+
   @Column({ type: "text" })
   payload: string;
+
   @Column({ type: "text" })
   key: string;
+
   @Column({ type: "boolean", default: false })
   used: boolean;
 
   @CreateDateColumn() createdAt: string;
+
   @UpdateDateColumn() updatedAt: string;
 
-  @BeforeInsert()
-
   //creates random verification code if phone, short email then long code
+  @BeforeInsert()
   createKey(): void {
     if (this.target === PHONE) {
       this.key = Math.floor(Math.random() * 100000).toString();

@@ -47,28 +47,30 @@ class User extends BaseEntity {
 
   @Column({ type: "boolean", default: false })
   isDriving: boolean;
+
   @Column({ type: "boolean", default: false })
   isTaken: boolean;
+
   @Column({ type: "boolean", default: false })
   isRiding: boolean;
 
   @Column({ type: "double precision", default: 0 })
   lastLng: number;
+
   @Column({ type: "double precision", default: 0 })
   lastLat: number;
+
   @Column({ type: "double precision", default: 0 })
   lastOrientation: number;
 
   @CreateDateColumn() createdAt: string;
+
   @UpdateDateColumn() updatedAt: string;
 
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
 
-  /**
-   * promise that returns boolean 
-   */
   public comparePassword(password: string): Promise<boolean> {
     return bcrypt.compare(password, this.password);
   }
