@@ -1,5 +1,6 @@
 import {
   BaseEntity,
+  BeforeInsert,
   Column,
   CreateDateColumn,
   Entity,
@@ -8,11 +9,14 @@ import {
 } from "typeorm";
 import { verificationTarget } from "src/types/types";
 
+const PHONE = "PHONE";
+const EMAIL = "EMAIL";
+
 @Entity()
 class Verification extends BaseEntity {
   @PrimaryGeneratedColumn() id: number;
 
-  @Column({ type: "text", enum: ["PHOEN", "EAMIL"] })
+  @Column({ type: "text", enum: [PHONE, EMAIL] })
   target: verificationTarget;
   @Column({ type: "text" })
   payload: string;
@@ -23,6 +27,17 @@ class Verification extends BaseEntity {
 
   @CreateDateColumn() createdAt: string;
   @UpdateDateColumn() updatedAt: string;
+
+  @BeforeInsert()
+
+  //creates random verification code if phone, short email then long code
+  createKey(): void {
+    if (this.target === PHONE) {
+      this.key = Math.floor(Math.random() * 100000).toString();
+    } else if (this.target === EMAIL) {
+      this.key = Math.random().toString(36).substr(2);
+    }
+  }
 }
 
 export default Verification;
