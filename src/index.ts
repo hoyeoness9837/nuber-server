@@ -21,5 +21,5 @@ const handleAppStart = () => console.log(`Listening on port ${PORT}`);
 createConnection(ConnectionOptions)
   .then(() => {
     app.start(appOptions, handleAppStart);
-  })
+  })  
   .catch((error) => console.log(error));
