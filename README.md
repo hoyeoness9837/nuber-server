@@ -4,7 +4,7 @@ Server repository for Nuber-server clone coding applicaiton
 ## Resolvers
 
 ### Public Resolvers:
-- [ ] Sign In and Sign Up with Facebook
+- [x] Sign In and Sign Up with Facebook
 - [ ] Sign In and Sign Up with Email
 - [ ] Start Phone number verificiation
 - [ ] Complete phone number verification
@@ -12,6 +12,8 @@ Server repository for Nuber-server clone coding applicaiton
 ---
 
 ### Private Resolvers:
+- [ ] Generate JWT
+- [ ] Verify JWT
 - [ ] Verify Email
 - [ ] Get my profile
 - [ ] Update my profile
