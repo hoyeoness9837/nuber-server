@@ -5,7 +5,7 @@ Server repository for Nuber-server clone coding applicaiton
 
 ### Public Resolvers:
 - [x] Sign In and Sign Up with Facebook
-- [ ] Sign In and Sign Up with Email
+- [x] Sign In and Sign Up with Email
 - [ ] Start Phone number verificiation
 - [ ] Complete phone number verification
 
