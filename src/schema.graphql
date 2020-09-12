@@ -82,6 +82,10 @@ type User {
   updatedAt: String
 }
 
+type Query {
+  user: User
+}
+
 type Verification {
   id: Int!
   target: String!

@@ -23,9 +23,9 @@ const BCRYPT_ROUNDS = 10;
 class User extends BaseEntity {
   @PrimaryGeneratedColumn() id: number;
 
-  @Column({ type: "text", unique: true })
+  @Column({ type: "text", nullable: true })
   @IsEmail()
-  email: string;
+  email: string | null;
 
   @Column({ type: "boolean", default: false })
   verifiedEmail: boolean;
@@ -36,7 +36,7 @@ class User extends BaseEntity {
   @Column({ type: "text" })
   lastName: string;
 
-  @Column({ type: "int" })
+  @Column({ type: "int", nullable: true })
   age: number;
 
   @Column({ type: "text" })
@@ -50,32 +50,32 @@ class User extends BaseEntity {
 
   @Column({ type: "text" })
   profilePhoto: string;
-  
+
   @Column({ type: "boolean", default: false })
   isDriving: boolean;
-  
+
   @Column({ type: "boolean", default: false })
   isTaken: boolean;
-  
+
   @Column({ type: "boolean", default: false })
   isRiding: boolean;
-  
+
   @Column({ type: "double precision", default: 0 })
   lastLng: number;
-  
+
   @Column({ type: "double precision", default: 0 })
   lastLat: number;
-  
+
   @Column({ type: "double precision", default: 0 })
   lastOrientation: number;
-  
+
   //fbId respresents facebook Id
   @Column({ type: "text", nullable: true })
   fbId: string;
-  
+
   @ManyToOne((type) => Chat, (chat) => chat.participants)
   chat: Chat;
-  
+
   @OneToMany((type) => Message, (message) => message.user)
   messages: Message[];
 
