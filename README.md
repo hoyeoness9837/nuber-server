@@ -7,11 +7,11 @@ Server repository for Nuber-server clone coding applicaiton
 - [x] Sign In and Sign Up with Facebook
 - [x] Sign In and Sign Up with Email
 - [x] Start Phone number verificiation
-- [ ] Complete phone number verification
+- [x] Complete phone number verification
 
 ---
 ### Authentications:
-- [ ] Generate JWT
+- [x] Generate JWT
 - [ ] Verify JWT
 ---
 
