@@ -11,4 +11,4 @@ export const sendSMS = (to: string, body: string) => {
 };
 
 export const sendVerificationSMS = (to: string, key: string) =>
-  sendSMS(to, `Your nuber verfication code: ${key}`);
+  sendSMS(to, `Your nuber verification code: ${key}`);
