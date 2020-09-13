@@ -1,7 +1,7 @@
 type Verification {
   id: Int!
   target: String!
-  paylaod: String!
+  payload: String!
   key: String!
   # user: User!
   createdAt: String!
