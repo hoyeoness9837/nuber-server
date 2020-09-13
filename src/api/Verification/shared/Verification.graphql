@@ -3,8 +3,8 @@ type Verification {
   target: String!
   paylaod: String!
   key: String!
-  used: Boolean!
-  user: User!
+  # used: Boolean!
+  # user: User!
   createdAt: String!
   updatedAt: String
 }
