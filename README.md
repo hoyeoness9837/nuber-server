@@ -10,6 +10,10 @@ Server repository for Nuber-server clone coding applicaiton
 - [ ] Complete phone number verification
 
 ---
+### Authentications:
+- [ ] Generate JWT
+- [ ] Verify JWT
+---
 
 ### Private Resolvers:
 - [ ] Generate JWT
