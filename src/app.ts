@@ -1,5 +1,5 @@
 import cors from "cors";
-import { NextFunction, Response, Request } from "express";
+import { NextFunction, Response } from "express";
 import { GraphQLServer } from "graphql-yoga";
 import helmet from "helmet";
 import logger from "morgan";

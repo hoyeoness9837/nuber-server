@@ -12,14 +12,12 @@ Server repository for Nuber-server clone coding applicaiton
 ---
 ### Authentications:
 - [x] Generate JWT
-- [ ] Verify JWT
+- [x] Verify JWT
 ---
 
 ### Private Resolvers:
-- [ ] Generate JWT
-- [ ] Verify JWT
-- [ ] Verify Email
 - [ ] Get my profile
+- [ ] Verify Email
 - [ ] Update my profile
 - [ ] Toggle Driving Mode
 - [ ] Report location / orientation 

@@ -26,6 +26,3 @@ type User {
   updatedAt: String
 }
 
-type Query {
-  user: User
-}
