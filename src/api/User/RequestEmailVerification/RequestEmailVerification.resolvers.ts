@@ -1,8 +1,8 @@
-import privateResolver from "../../../utils/privateResolver";
 import User from "../../../entities/User";
 import Verification from "../../../entities/Verification";
 import { RequestEmailVerificationResponse } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
+import privateResolver from "../../../utils/privateResolver";
 import { sendVerificationEmail } from "../../../utils/sendEmail";
 
 const resolvers: Resolvers = {
@@ -10,7 +10,7 @@ const resolvers: Resolvers = {
     RequestEmailVerificaiton: privateResolver(
       async (_, __, { req }): Promise<RequestEmailVerificationResponse> => {
         const user: User = req.user;
-        if (user.email) {
+        if (user.email && !user.verifiedEmail) {
           try {
             const oldVerification = await Verification.findOne({
               payload: user.email,

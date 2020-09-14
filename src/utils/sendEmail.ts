@@ -7,8 +7,8 @@ const mailGunClient = new Mailgun({
 // to:string,
 const sendEmail = (subject: string, html: string) => {
   const emailData = {
-    from: "NUBER <hoyeoness9837@gmail.com>",
-    to: "<hoyeoness9837@gmail.com>",
+    from: 'kim.hoyeon93@gmail.com',
+    to: 'kim.hoyeon93@gmail.com',
     subject,
     html,
   };
@@ -17,6 +17,6 @@ const sendEmail = (subject: string, html: string) => {
 
 export const sendVerificationEmail = (fullName: string, key: string) => {
     const emailSubject = `Hello! ${fullName}, Please verify your email`;
-    const emailBody = `Verify your email by clicking following link <a href="https://hoyeoness9837.github.io/hoyeonkim.github.io/">here</a>`
+    const emailBody = `Thank you for testing my nuber project!, Please verify your email by clicking following link <a href="https://nuber.com/verification/${key}">here</a>`
     return sendEmail(emailSubject, emailBody)
 }

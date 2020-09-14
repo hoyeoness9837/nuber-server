@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { rideStatus } from "src/types/types";
+import { rideStatus } from "../types/types";
 import User from "./User";
 
 @Entity()
