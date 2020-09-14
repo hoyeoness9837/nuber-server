@@ -16,8 +16,9 @@ Server repository for Nuber-server clone coding applicaiton
 ---
 
 ### Private Resolvers:
-- [ ] Get my profile
-- [ ] Verify Email
+- [x] Get my profile
+- [ ] Request Email Verification
+- [ ] Complete Email Verification
 - [ ] Update my profile
 - [ ] Toggle Driving Mode
 - [ ] Report location / orientation 

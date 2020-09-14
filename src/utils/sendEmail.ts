@@ -7,8 +7,8 @@ const mailGunClient = new Mailgun({
 // to:string,
 const sendEmail = (subject: string, html: string) => {
   const emailData = {
-    from: "kim.hoyeon93@gmail.com",
-    to: "kim.hoyeon93@gmail.cm",
+    from: "NUBER <mailgun@sandboxae14d589f43b4853a4871aa87dba2391.mailgun.org>",
+    to: "<kim.hoyeon93@gmail.com>",
     subject,
     html,
   };

@@ -1,4 +1,3 @@
-import createJWT from "../../../utils/createJWT";
 import User from "../../../entities/User";
 import Verification from "../../../entities/Verification";
 import {
@@ -6,6 +5,7 @@ import {
   EmailSignUpResponse,
 } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
+import createJWT from "../../../utils/createJWT";
 import { sendVerificationEmail } from "../../../utils/sendEmail";
 
 const resolvers: Resolvers = {
@@ -32,7 +32,7 @@ const resolvers: Resolvers = {
               const emailVerification = await Verification.create({
                   payload:  newUser.email,
                   target: "EMAIL"
-                });
+                }).save();
                 await sendVerificationEmail(newUser.fullName, emailVerification.key)
             }
             const token = createJWT(newUser.id);
@@ -44,7 +44,7 @@ const resolvers: Resolvers = {
           } else {
             return {
               ok: false,
-              error: "You have not been verified your phone number yet.",
+              error: "You have not been verified your phone number yet",
               token: null,
             }
           }
