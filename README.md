@@ -23,8 +23,8 @@ Server repository for Nuber-server clone coding applicaiton
 - [x] Toggle Driving Mode
 - [x] Report location / orientation 
 - [x] Add place
-- [ ] Edit place
-- [ ] Delete place
+- [x] Edit place
+- [x] Delete place
 - [ ] Get My places
 - [ ] See Nearby Drivers
 - [ ] Subscribe to Nearby Drivers
