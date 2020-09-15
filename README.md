@@ -21,7 +21,7 @@ Server repository for Nuber-server clone coding applicaiton
 - [x] Complete Email Verification
 - [x] Update my profile
 - [x] Toggle Driving Mode
-- [ ] Report location / orientation 
+- [x] Report location / orientation 
 - [ ] Add place
 - [ ] Edit place
 - [ ] Delete place
