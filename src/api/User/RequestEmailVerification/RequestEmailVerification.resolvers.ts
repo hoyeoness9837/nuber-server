@@ -7,7 +7,7 @@ import { sendVerificationEmail } from "../../../utils/sendEmail";
 
 const resolvers: Resolvers = {
   Mutation: {
-    RequestEmailVerificaiton: privateResolver(
+    RequestEmailVerification: privateResolver(
       async (_, __, { req }): Promise<RequestEmailVerificationResponse> => {
         const user: User = req.user;
         if (user.email && !user.verifiedEmail) {

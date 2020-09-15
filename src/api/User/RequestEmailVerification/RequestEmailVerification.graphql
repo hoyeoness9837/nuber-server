@@ -4,5 +4,5 @@ type RequestEmailVerificationResponse {
 }
 
 type Mutation {
-  RequestEmailVerificaiton: RequestEmailVerificationResponse!
+  RequestEmailVerification: RequestEmailVerificationResponse!
 }
