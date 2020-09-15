@@ -17,10 +17,10 @@ Server repository for Nuber-server clone coding applicaiton
 
 ### Private Resolvers:
 - [x] Get my profile
-- [ ] Request Email Verification
-- [ ] Complete Email Verification
-- [ ] Update my profile
-- [ ] Toggle Driving Mode
+- [x] Request Email Verification
+- [x] Complete Email Verification
+- [x] Update my profile
+- [x] Toggle Driving Mode
 - [ ] Report location / orientation 
 - [ ] Add place
 - [ ] Edit place
