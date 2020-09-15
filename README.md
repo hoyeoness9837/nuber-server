@@ -23,9 +23,9 @@ Server repository for Nuber-server clone coding applicaiton
 - [x] Toggle Driving Mode
 - [x] Report location / orientation 
 - [x] Add place
-- [x] Edit place
+- [?] Edit place
 - [x] Delete place
-- [ ] Get My places
+- [x] Get My places
 - [ ] See Nearby Drivers
 - [ ] Subscribe to Nearby Drivers
 - [ ] Request a Ride
