@@ -20,8 +20,9 @@ type User {
   messages: [Message]
   ridesAsPassenger: [Ride]
   ridesAsDriver: [Ride]
-  places:[Place]
+  # chatsAsDriver: [Chat]
+  # chatsAsPassenger: [Chat]
+  places: [Place]
   createdAt: String!
   updatedAt: String
 }
-

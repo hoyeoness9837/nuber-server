@@ -15,7 +15,6 @@ const resolvers: Resolvers = {
       ): Promise<EditPlaceResponse> => {
         const user: User = req.user;
         try {
-            //instead of load all relationship within Place.findOne to use its id, create a column in place.ts utilizing typeorm
           const place = await Place.findOne({ id: args.placeId });
           if (place) {
             if (place.userId === user.id) {
@@ -23,29 +22,28 @@ const resolvers: Resolvers = {
               await Place.update({ id: args.placeId }, { ...notNull });
               return {
                 ok: true,
-                error: null,
+                error: null
               };
             } else {
               return {
                 ok: false,
-                error: "Not Authorized",
+                error: "Not Authorized"
               };
             }
           } else {
             return {
               ok: false,
-              error: "Place not found",
+              error: "Place not found"
             };
           }
         } catch (error) {
           return {
             ok: false,
-            error: error.message,
+            error: error.message
           };
         }
       }
-    ),
-  },
+    )
+  }
 };
-
 export default resolvers;
