@@ -1,6 +1,6 @@
 import cors from "cors";
 import { NextFunction, Response } from "express";
-import { GraphQLServer } from "graphql-yoga";
+import { GraphQLServer, PubSub } from "graphql-yoga";
 import helmet from "helmet";
 import logger from "morgan";
 import schema from "./schema";
@@ -8,15 +8,19 @@ import decodeJWT from "./utils/decodeJWT";
 
 class App {
   public app: GraphQLServer;
+  public pubSub: any;
   constructor() {
+    this.pubSub = new PubSub(); // could be replaced with Redis or Memcached : in-memory cache
+    this.pubSub.ee.setMaxListeners(99); // prevents memory leakage. 
     this.app = new GraphQLServer({
       schema,
       // from token, we make req.user, which is usefull in all resolvers.
-      context: req => {
+      context: (req) => {
         return {
-          req: req.request
-        }
-      }
+          req: req.request,
+          pubSub: this.pubSub
+        };
+      },
     });
     this.middlewares();
   }
@@ -24,17 +28,21 @@ class App {
     this.app.express.use(cors());
     this.app.express.use(logger("dev"));
     this.app.express.use(helmet());
-    this.app.express.use(this.jwt);;
+    this.app.express.use(this.jwt);
   };
 
-  private jwt = async (req, res: Response, next: NextFunction): Promise<any> => {
+  private jwt = async (
+    req,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> => {
     const token = req.get("X-JWT");
     if (token) {
       const user = await decodeJWT(token);
-      if(user) {
-        req.user = user
+      if (user) {
+        req.user = user;
       } else {
-        req.user = undefined
+        req.user = undefined;
       }
     }
     next();
