@@ -14,6 +14,7 @@ import {
 } from "typeorm";
 import Chat from "./Chat";
 import Message from "./Message";
+import Place from "./Place";
 import Ride from "./Ride";
 
 const BCRYPT_ROUNDS = 10;
@@ -23,7 +24,6 @@ class User extends BaseEntity {
   @PrimaryGeneratedColumn() id: number;
 
   @Column({ type: "text", nullable: true })
-  
   @IsEmail()
   email: string | null;
 
@@ -84,6 +84,9 @@ class User extends BaseEntity {
 
   @OneToMany((type) => Ride, (ride) => ride.driver)
   ridesAsDriver: Ride[];
+
+  @OneToMany((type) => Place, (place) => place.user)
+  places: Place[];
 
   @CreateDateColumn() createdAt: string;
 
