@@ -18,7 +18,7 @@ const resolvers: Resolvers = {
         if (!user) {
           return {
             ok: false,
-            error: "no user with the email",
+            error: "No user found with that email",
             token: null,
           };
         }
@@ -33,7 +33,7 @@ const resolvers: Resolvers = {
         } else {
           return {
             ok: false,
-            error: "wrong password",
+            error: "Wrong password",
             token: null,
           };
         }
@@ -47,5 +47,4 @@ const resolvers: Resolvers = {
     },
   },
 };
-
 export default resolvers;
