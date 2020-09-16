@@ -12,7 +12,9 @@ const resolvers: Resolvers = {
         try {
           const chat = await Chat.findOne({
             id: args.chatId
-          });
+          },
+            { relations: ["passanger", "driver", "messages"] } // messages is required. others are optional.
+          );
           if (chat) {
             if (chat.passengerId === user.id || chat.driverId === user.id) {
               return {
