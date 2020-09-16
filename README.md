@@ -26,8 +26,8 @@ Server repository for Nuber-server clone coding applicaiton
 - [?] Edit place
 - [x] Delete place
 - [x] Get My places
-- [ ] See Nearby Drivers
-- [ ] Subscribe to Nearby Drivers
+- [x] See Nearby Drivers
+- [x] Subscribe to Nearby Drivers
 - [ ] Request a Ride
 - [ ] Get Nearby Rides Requests
 - [ ] Subscribe to Nearby Ride Requests

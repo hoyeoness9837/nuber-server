@@ -19,7 +19,8 @@ const resolvers: Resolvers = {
         const notNull = cleanNullArgs(args);
         try {
           await User.update({ id: user.id }, { ...notNull });
-          pubSub.publish("driverUpdate", { DriversSubscription: user} )
+          const updatedUser = await User.findOne({ id: user.id }); // prevents duplicating. now sending updated user data.
+          pubSub.publish("driverUpdate", { DriversSubscription: updatedUser }); // payload has to have same name as subscription(driverssubscription.graphql)
           return {
             ok: true,
             error: null,
