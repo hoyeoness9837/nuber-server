@@ -16,9 +16,11 @@ class App {
       schema,
       // from token, we make req.user, which is usefull in all resolvers.
       context: (req) => {
+        const { connection: { context = null } = {} } = req; // give context in the connection in the req default value of null prevent error.
         return {
           req: req.request,
-          pubSub: this.pubSub
+          pubSub: this.pubSub,
+          context,
         };
       },
     });
