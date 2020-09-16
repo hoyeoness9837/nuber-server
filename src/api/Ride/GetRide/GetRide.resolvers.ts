@@ -13,7 +13,6 @@ const resolvers: Resolvers = {
           const ride = await Ride.findOne({
             id: args.rideId
           });
-
           if (ride) {
             if (ride.passengerId === user.id || ride.driverId === user.id) {
               return {
