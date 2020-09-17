@@ -23,7 +23,7 @@ Server repository for Nuber-server clone coding applicaiton
 - [x] Toggle Driving Mode
 - [x] Report location / orientation 
 - [x] Add place
-- [?] Edit place
+- [x] Edit place
 - [x] Delete place
 - [x] Get My places
 - [x] See Nearby Drivers
@@ -36,8 +36,8 @@ Server repository for Nuber-server clone coding applicaiton
 - [x] Subscribe to Ride Status
 - [x] Create a Chat room
 - [x] Get Chat Room Messages
-- [ ] Subscribe to Chat Room Messages
-- [ ] Send a Chat Message
+- [x] Send a Chat Message
+- [x] Subscribe to Chat Room Messages
 
 ## Code Challenge
 - [ ] Get Ride History
