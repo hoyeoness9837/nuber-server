@@ -1,5 +1,9 @@
 # nuber-server
-Server repository for Nuber-server clone coding applicaiton
+Server repository for Nuber-server clone coding applicaiton, 
+
+## Installation & User Direction
+Clone the application in your directory, open app in VS code. Then, in terminal, type 'yarn' or 'npm i' to install packages/dependencies. Create and .env file in your root and have TWILIO_SID, TWILIO_PHONE, TWILIO_TOKEN, JWT_TOKEN, MAILGUN_API_KEY All ready. type psql and check you have postgreSQL local database. DROP DATABASE nuber; -> CREATE DATABASE nuber; just to make sure. 
+Go to http://localhost:4000/playground, and try queries or mutations to create user, do phone or email authentications request rides edit your profile and so on. 
 
 ## Resolvers
 
@@ -38,7 +42,3 @@ Server repository for Nuber-server clone coding applicaiton
 - [x] Get Chat Room Messages
 - [x] Send a Chat Message
 - [x] Subscribe to Chat Room Messages
-
-## Code Challenge
-- [ ] Get Ride History
-- [ ] See Ride Detail

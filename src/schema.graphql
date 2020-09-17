@@ -52,6 +52,7 @@ type Chat {
   passenger: User!
   driverId: Int
   driver: User!
+  rideId: Int
   ride: Ride!
   createdAt: String!
   updatedAt: String
@@ -121,7 +122,7 @@ type RequestRideResponse {
 
 type Ride {
   id: Int!
-  status: String
+  status: String!
   pickUpAddress: String!
   pickUpLat: Float!
   pickUpLng: Float!
@@ -136,6 +137,7 @@ type Ride {
   passengerId: Int!
   passenger: User!
   chat: Chat
+  chatId: Int
   createdAt: String!
   updatedAt: String
 }
@@ -184,7 +186,7 @@ type FacebookConnectResponse {
 
 type GetMyProfileResponse {
   ok: Boolean!
-  error: String!
+  error: String
   user: User
 }
 
@@ -244,7 +246,7 @@ type ToggleDrivingModeResponse {
 }
 
 type UpdateMyProfileResponse {
-  ok: Boolean
+  ok: Boolean!
   error: String
 }
 
