@@ -2,7 +2,7 @@ import User from "../../../entities/User";
 import Verification from "../../../entities/Verification";
 import {
   CompleteEmailVerificationMutationArgs,
-  CompleteEmailVerificationResponse,
+  CompleteEmailVerificationResponse
 } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
@@ -21,36 +21,36 @@ const resolvers: Resolvers = {
           try {
             const verification = await Verification.findOne({
               key,
-              payload: user.email,
+              payload: user.email
             });
             if (verification) {
               user.verifiedEmail = true;
               user.save();
               return {
                 ok: true,
-                error: null,
+                error: null
               };
             } else {
               return {
                 ok: false,
-                error: "cannot verify email",
+                error: "Cant verify email"
               };
             }
           } catch (error) {
             return {
               ok: false,
-              error: error.message,
+              error: error.message
             };
           }
         } else {
           return {
             ok: false,
-            error: "No email verified",
+            error: "No email to verify"
           };
         }
       }
-    ),
-  },
+    )
+  }
 };
 
 export default resolvers;

@@ -9,7 +9,7 @@ import {
   Entity,
   OneToMany,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
+  UpdateDateColumn
 } from "typeorm";
 import Chat from "./Chat";
 import Message from "./Message";
@@ -54,10 +54,10 @@ class User extends BaseEntity {
   isDriving: boolean;
 
   @Column({ type: "boolean", default: false })
-  isTaken: boolean;
+  isRiding: boolean;
 
   @Column({ type: "boolean", default: false })
-  isRiding: boolean;
+  isTaken: boolean;
 
   @Column({ type: "double precision", default: 0 })
   lastLng: number;
@@ -68,7 +68,6 @@ class User extends BaseEntity {
   @Column({ type: "double precision", default: 0 })
   lastOrientation: number;
 
-  //fbId respresents facebook Id
   @Column({ type: "text", nullable: true })
   fbId: string;
 
@@ -78,16 +77,16 @@ class User extends BaseEntity {
   @OneToMany(type => Chat, chat => chat.driver)
   chatsAsDriver: Chat[];
 
-  @OneToMany((type) => Message, (message) => message.user)
+  @OneToMany(type => Message, message => message.user)
   messages: Message[];
 
-  @OneToMany((type) => Ride, (ride) => ride.passenger)
+  @OneToMany(type => Ride, ride => ride.passenger)
   ridesAsPassenger: Ride[];
 
-  @OneToMany((type) => Ride, (ride) => ride.driver)
+  @OneToMany(type => Ride, ride => ride.driver)
   ridesAsDriver: Ride[];
 
-  @OneToMany((type) => Place, (place) => place.user)
+  @OneToMany(type => Place, place => place.user)
   places: Place[];
 
   @CreateDateColumn() createdAt: string;

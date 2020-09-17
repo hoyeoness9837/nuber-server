@@ -1,9 +1,9 @@
-import User from "../../../entities/User";
-import Ride from "../../../entities/Ride";
 import Chat from "../../../entities/Chat";
+import Ride from "../../../entities/Ride";
+import User from "../../../entities/User";
 import {
   UpdateRideStatusMutationArgs,
-  UpdateRideStatusResponse,
+  UpdateRideStatusResponse
 } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
@@ -24,7 +24,7 @@ const resolvers: Resolvers = {
               ride = await Ride.findOne(
                 {
                   id: args.rideId,
-                  status: "REQUESTING",
+                  status: "REQUESTING"
                 },
                 { relations: ["passenger"] }
               );
@@ -34,7 +34,7 @@ const resolvers: Resolvers = {
                 user.save();
                 const chat = await Chat.create({
                   driver: user,
-                  passenger: ride.passenger,
+                  passenger: ride.passenger
                 }).save();
                 ride.chat = chat;
                 ride.save();
@@ -42,37 +42,37 @@ const resolvers: Resolvers = {
             } else {
               ride = await Ride.findOne({
                 id: args.rideId,
-                driver: user, // only driver can change status of ride.
+                driver: user// only driver can change status of ride.
               });
             }
             if (ride) {
               ride.status = args.status;
               ride.save();
-              pubSub.publish("rideUpdate",  {  RideStatusSubscription: ride  });
+              pubSub.publish("rideUpdate", { RideStatusSubscription: ride });
               return {
                 ok: true,
-                error: null,
+                error: null
               };
             } else {
               return {
                 ok: false,
-                error: "Cant update ride",
+                error: "Cant update ride"
               };
             }
           } catch (error) {
             return {
               ok: false,
-              error: error.message,
+              error: error.message
             };
           }
         } else {
           return {
             ok: false,
-            error: "you are not driving",
+            error: "You are not driving"
           };
         }
       }
-    ),
-  },
+    )
+  }
 };
 export default resolvers;

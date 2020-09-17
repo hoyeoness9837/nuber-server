@@ -13,22 +13,21 @@ const resolvers: Resolvers = {
         { req }
       ): Promise<AddPlaceResponse> => {
         const user: User = req.user;
-
         try {
           await Place.create({ ...args, user }).save();
           return {
             ok: true,
-            error: null,
+            error: null
           };
         } catch (error) {
           return {
             ok: false,
-            error: error.message,
+            error: error.message
           };
         }
       }
-    ),
-  },
+    )
+  }
 };
 
 export default resolvers;

@@ -6,9 +6,9 @@ const sendSMS = (to: string, body: string) => {
   return twilioClient.messages.create({
     body,
     to,
-    from: process.env.TWILIO_PHONE,
+    from: process.env.TWILIO_PHONE
   });
 };
 
 export const sendVerificationSMS = (to: string, key: string) =>
-  sendSMS(to, `Your nuber verification code: ${key}`);
+  sendSMS(to, `Your verification key is: ${key}`);

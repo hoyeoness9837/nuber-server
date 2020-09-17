@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
+  UpdateDateColumn
 } from "typeorm";
 import { verificationTarget } from "../types/types";
 
@@ -25,24 +25,22 @@ class Verification extends BaseEntity {
   @Column({ type: "text" })
   key: string;
 
-  // has user already been verified
   @Column({ type: "boolean", default: false })
   verified: boolean;
 
-  @CreateDateColumn()
-  createdAt: string;
+  @CreateDateColumn() createdAt: string;
 
   @UpdateDateColumn() updatedAt: string;
 
-  //creates random verification code if phone, short email then long code
   @BeforeInsert()
-  createKey(): void {
+  createKey(): void {//creates random verification code if phone, short email then long code
     if (this.target === PHONE) {
       this.key = Math.floor(Math.random() * 100000).toString();
     } else if (this.target === EMAIL) {
-      this.key = Math.random().toString(36).substr(2);
+      this.key = Math.random()
+        .toString(36)
+        .substr(2);
     }
   }
 }
-
 export default Verification;

@@ -1,11 +1,11 @@
 import User from "../../../entities/User";
-import { Resolvers } from "../../../types/resolvers";
 import {
   UpdateMyProfileMutationArgs,
-  UpdateMyProfileResponse,
+  UpdateMyProfileResponse
 } from "../../../types/graph";
-import privateResolver from "../../../utils/privateResolver";
+import { Resolvers } from "../../../types/resolvers";
 import cleanNullArgs from "../../../utils/cleanNullArg";
+import privateResolver from "../../../utils/privateResolver";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -16,26 +16,27 @@ const resolvers: Resolvers = {
         { req }
       ): Promise<UpdateMyProfileResponse> => {
         const user: User = req.user;
-        const notNull = cleanNullArgs(args);
+        const notNull: any = cleanNullArgs(args);
+        if (notNull.password) {
+          user.password = notNull.password;
+          user.save();
+          delete notNull.password;
+        }
         try {
-            if (args.password !== null) {
-              user.password = args.password;
-              user.save();
-            }
           await User.update({ id: user.id }, { ...notNull });
           return {
             ok: true,
-            error: null,
+            error: null
           };
         } catch (error) {
           return {
             ok: false,
-            error: error.message,
+            error: error.message
           };
         }
       }
-    ),
-  },
+    )
+  }
 };
 
 export default resolvers;

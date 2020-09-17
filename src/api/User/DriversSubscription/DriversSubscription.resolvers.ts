@@ -1,9 +1,8 @@
 import { withFilter } from "graphql-yoga";
 import User from "../../../entities/User";
 
-// filter driver object that carries payload that is going be returned to users who are at the lastlat and lastlng is close driverslastlat and lng.
 const resolvers = {
-  Subscription: {
+  Subscription: {// filter driver object that carries payload that is going be returned to users who are at the lastlat and lastlng is close driverslastlat and lng.
     DriversSubscription: {
       subscribe: withFilter(
         (_, __, { pubSub }) => pubSub.asyncIterator("driverUpdate"),
@@ -12,8 +11,8 @@ const resolvers = {
           const {
             DriversSubscription: {
               lastLat: driverLastLat,
-              lastLng: driverLastLng,
-            },
+              lastLng: driverLastLng
+            }
           } = payload;
           const { lastLat: userLastLat, lastLng: userLastLng } = user;
           return (
@@ -23,9 +22,8 @@ const resolvers = {
             driverLastLng <= userLastLng + 0.05
           );
         }
-      ),
-    },
-  },
+      )
+    }
+  }
 };
-
 export default resolvers;

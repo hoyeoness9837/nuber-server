@@ -1,7 +1,7 @@
 type GetNearbyDriversResponse {
   ok: Boolean!
   error: String
-  drivers:[User]
+  drivers: [User]
 }
 
 type Query {

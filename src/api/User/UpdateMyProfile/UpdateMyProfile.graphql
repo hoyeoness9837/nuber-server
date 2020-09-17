@@ -1,5 +1,5 @@
 type UpdateMyProfileResponse {
-  ok: Boolean
+  ok: Boolean!
   error: String
 }
 

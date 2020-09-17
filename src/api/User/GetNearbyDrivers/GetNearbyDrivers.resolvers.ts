@@ -1,6 +1,6 @@
 import { Between, getRepository } from "typeorm";
-import { GetNearbyDriversResponse } from "../../../types/graph";
 import User from "../../../entities/User";
+import { GetNearbyDriversResponse } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
 
@@ -14,22 +14,22 @@ const resolvers: Resolvers = {
           const drivers: User[] = await getRepository(User).find({
             isDriving: true,
             lastLat: Between(lastLat - 0.05, lastLat + 0.05),
-            lastLng: Between(lastLng - 0.05, lastLng + 0.05),
+            lastLng: Between(lastLng - 0.05, lastLng + 0.05)
           });
           return {
             ok: true,
             error: null,
-            drivers,
+            drivers
           };
         } catch (error) {
           return {
             ok: false,
             error: error.message,
-            drivers: null,
+            drivers: null
           };
         }
       }
-    ),
-  },
+    )
+  }
 };
 export default resolvers;

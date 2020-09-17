@@ -2,7 +2,7 @@ import User from "../../../entities/User";
 import Verification from "../../../entities/Verification";
 import {
   CompletePhoneVerificationMutationArgs,
-  CompletePhoneVerificationResponse,
+  CompletePhoneVerificationResponse
 } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import createJWT from "../../../utils/createJWT";
@@ -17,13 +17,13 @@ const resolvers: Resolvers = {
       try {
         const verification = await Verification.findOne({
           payload: phoneNumber,
-          key,
+          key
         });
         if (!verification) {
           return {
             ok: false,
-            error: " Verification code is not vaild",
-            token: null,
+            error: "Verification key not valid",
+            token: null
           };
         } else {
           verification.verified = true;
@@ -33,12 +33,11 @@ const resolvers: Resolvers = {
         return {
           ok: false,
           error: error.message,
-          token: null,
+          token: null
         };
       }
 
-      //try if user have been already verified with a phone number
-      try {
+      try {//try if user have been already verified with a phone number 
         const user = await User.findOne({ phoneNumber });
         if (user) {
           user.verifiedPhoneNumber = true;
@@ -47,25 +46,24 @@ const resolvers: Resolvers = {
           return {
             ok: true,
             error: null,
-            token,
+            token
           };
-        } else {
-          //phone number has been verified, but there is no user assigned to it
+        } else {//phone number has been verified, but there is no user assigned to it
           return {
             ok: true,
             error: null,
-            token: null,
+            token: null
           };
         }
       } catch (error) {
         return {
           ok: false,
           error: error.message,
-          token: null,
+          token: null
         };
       }
-    },
-  },
+    }
+  }
 };
 
 export default resolvers;

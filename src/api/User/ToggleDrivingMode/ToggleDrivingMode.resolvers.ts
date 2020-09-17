@@ -12,11 +12,11 @@ const resolvers: Resolvers = {
         user.save();
         return {
           ok: true,
-          error: null,
+          error: null
         };
       }
-    ),
-  },
+    )
+  }
 };
 
 export default resolvers;

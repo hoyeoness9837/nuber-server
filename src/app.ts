@@ -10,19 +10,18 @@ class App {
   public app: GraphQLServer;
   public pubSub: any;
   constructor() {
-    this.pubSub = new PubSub(); // could be replaced with Redis or Memcached : in-memory cache
-    this.pubSub.ee.setMaxListeners(99); // prevents memory leakage. 
+    this.pubSub = new PubSub();// could be replaced with Redis or Memcached : in-memory 
+    this.pubSub.ee.setMaxListeners(99);// prevents memory leakage. 
     this.app = new GraphQLServer({
       schema,
-      // from token, we make req.user, which is usefull in all resolvers.
-      context: (req) => {
+      context: req => {// from token, we make req.user, which is useful in all resolvers.
         const { connection: { context = null } = {} } = req; // give context in the connection in the req default value of null prevent error.
         return {
           req: req.request,
           pubSub: this.pubSub,
-          context,
+          context
         };
-      },
+      }
     });
     this.middlewares();
   }
@@ -37,7 +36,7 @@ class App {
     req,
     res: Response,
     next: NextFunction
-  ): Promise<any> => {
+  ): Promise<void> => {
     const token = req.get("X-JWT");
     if (token) {
       const user = await decodeJWT(token);

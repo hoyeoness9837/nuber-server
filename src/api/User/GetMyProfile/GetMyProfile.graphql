@@ -1,7 +1,7 @@
 type GetMyProfileResponse {
-    ok: Boolean!
-    error: String!
-    user : User
+  ok: Boolean!
+  error: String
+  user: User
 }
 
 type Query {

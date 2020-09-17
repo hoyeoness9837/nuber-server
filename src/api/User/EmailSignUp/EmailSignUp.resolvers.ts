@@ -2,7 +2,7 @@ import User from "../../../entities/User";
 import Verification from "../../../entities/Verification";
 import {
   EmailSignUpMutationArgs,
-  EmailSignUpResponse,
+  EmailSignUpResponse
 } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import createJWT from "../../../utils/createJWT";
@@ -20,44 +20,49 @@ const resolvers: Resolvers = {
         if (existingUser) {
           return {
             ok: false,
-            error: "Your account is already exist",
-            token: null,
+            error: "You should log in instead",
+            token: null
           };
         } else {
-          // sendEmail(newUser.email)
-          const phoneVerification = await Verification.findOne({payload: args.phoneNumber, verified:true})
-          if(phoneVerification) {
+          const phoneVerification = await Verification.findOne({
+            payload: args.phoneNumber,
+            verified: true
+          });
+          if (phoneVerification) {
             const newUser = await User.create({ ...args }).save();
-            if (newUser.email)  {
+            if (newUser.email) {
               const emailVerification = await Verification.create({
-                  payload:  newUser.email,
-                  target: "EMAIL"
-                }).save();
-                await sendVerificationEmail(newUser.fullName, emailVerification.key)
+                payload: newUser.email,
+                target: "EMAIL"
+              }).save();
+              await sendVerificationEmail(
+                newUser.fullName,
+                emailVerification.key
+              );
             }
             const token = createJWT(newUser.id);
             return {
               ok: true,
               error: null,
-              token,
+              token
             };
           } else {
             return {
               ok: false,
-              error: "You have not been verified your phone number yet",
-              token: null,
-            }
+              error: "You haven't verified your phone number",
+              token: null
+            };
           }
         }
       } catch (error) {
         return {
           ok: false,
           error: error.message,
-          token: null,
+          token: null
         };
       }
-    },
-  },
+    }
+  }
 };
 
 export default resolvers;

@@ -1,7 +1,7 @@
 import User from "../../../entities/User";
 import {
   ReportMovementMutationArgs,
-  ReportMovementResponse,
+  ReportMovementResponse
 } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import cleanNullArgs from "../../../utils/cleanNullArg";
@@ -19,21 +19,21 @@ const resolvers: Resolvers = {
         const notNull = cleanNullArgs(args);
         try {
           await User.update({ id: user.id }, { ...notNull });
-          const updatedUser = await User.findOne({ id: user.id }); // prevents duplicating. now sending updated user data.
-          pubSub.publish("driverUpdate", { DriversSubscription: updatedUser }); // payload has to have same name as subscription(driverssubscription.graphql)
+          const updatedUser = await User.findOne({ id: user.id });
+          pubSub.publish("driverUpdate", { DriversSubscription: updatedUser });
           return {
             ok: true,
-            error: null,
+            error: null
           };
         } catch (error) {
           return {
             ok: false,
-            error: error.message,
+            error: error.message
           };
         }
       }
-    ),
-  },
+    )
+  }
 };
 
 export default resolvers;

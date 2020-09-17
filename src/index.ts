@@ -1,15 +1,15 @@
-//importing modules comes first then lib comes later in alphabetical order in typescript.
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: "../.env" });
+
 import { Options } from "graphql-yoga";
 import { createConnection } from "typeorm";
 import app from "./app";
-import ConnectionOptions from "./ormConfig";
+import connectionOptions from "./ormConfig";
 import decodeJWT from "./utils/decodeJWT";
 
 const PORT: number | string = process.env.PORT || 4000;
 const PLAYGROUND_ENDPOINT: string = "/playground";
-const GRAPHQL_ENDPOINT: string = "/grpahql";
+const GRAPHQL_ENDPOINT: string = "/graphql";
 const SUBSCRIPTION_ENDPOINT: string = "/subscription";
 
 const appOptions: Options = {
@@ -18,25 +18,25 @@ const appOptions: Options = {
   endpoint: GRAPHQL_ENDPOINT,
   subscriptions: {
     path: SUBSCRIPTION_ENDPOINT,
-    onConnect: async (connectionParams) => {
+    onConnect: async connectionParams => {
       const token = connectionParams["X-JWT"];
       if (token) {
         const user = await decodeJWT(token);
         if (user) {
           return {
-            currentUser: user,
+            currentUser: user
           };
         }
       }
-      throw new Error("No JWT. Can't subscribe")
-    },
-  },
+      throw new Error("No JWT. Can't subscribe");
+    }
+  }
 };
 
 const handleAppStart = () => console.log(`Listening on port ${PORT}`);
 
-createConnection(ConnectionOptions)
+createConnection(connectionOptions)
   .then(() => {
     app.start(appOptions, handleAppStart);
-  })  
-  .catch((error) => console.log(error));
+  })
+  .catch(error => console.log(error));

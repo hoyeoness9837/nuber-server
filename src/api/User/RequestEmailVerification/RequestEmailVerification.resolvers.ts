@@ -13,35 +13,35 @@ const resolvers: Resolvers = {
         if (user.email && !user.verifiedEmail) {
           try {
             const oldVerification = await Verification.findOne({
-              payload: user.email,
+              payload: user.email
             });
             if (oldVerification) {
               oldVerification.remove();
             }
             const newVerification = await Verification.create({
               payload: user.email,
-              target: "EMAIL",
+              target: "EMAIL"
             }).save();
             await sendVerificationEmail(user.fullName, newVerification.key);
             return {
               ok: true,
-              error: null,
+              error: null
             };
           } catch (error) {
             return {
               ok: false,
-              error: error.message,
+              error: error.message
             };
           }
         } else {
           return {
             ok: false,
-            error: "Your user has no email to verify",
+            error: "Your user has no email to verify"
           };
         }
       }
-    ),
-  },
+    )
+  }
 };
 
 export default resolvers;

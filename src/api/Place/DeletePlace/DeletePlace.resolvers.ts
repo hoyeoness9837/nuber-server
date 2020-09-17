@@ -2,7 +2,7 @@ import Place from "../../../entities/Place";
 import User from "../../../entities/User";
 import {
   DeletePlaceMutationArgs,
-  DeletePlaceResponse,
+  DeletePlaceResponse
 } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
@@ -23,29 +23,29 @@ const resolvers: Resolvers = {
               place.remove();
               return {
                 ok: true,
-                error: null,
+                error: null
               };
             } else {
               return {
                 ok: false,
-                error: "Not Authorized",
+                error: "Not Authorized"
               };
             }
           } else {
             return {
               ok: false,
-              error: "Place not found",
+              error: "Place not found"
             };
           }
         } catch (error) {
           return {
             ok: false,
-            error: error.message,
+            error: error.message
           };
         }
       }
-    ),
-  },
+    )
+  }
 };
 
 export default resolvers;
